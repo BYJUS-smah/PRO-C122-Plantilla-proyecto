@@ -1,4 +1,4 @@
-#Text Data Preprocessing Lib
+#Biblioteca de procesamiento de datos. 
 import nltk
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -12,13 +12,13 @@ import pickle
 import numpy as np
 import random
 
-# Model Load Lib
+# Biblioteca para cargar el modelo.
 import tensorflow
 from data_preprocessing import get_stem_words
 
 model = tensorflow.keras.models.load_model('./static/assets/model_files/chatbot_model.h5')
 
-# Load data files
+# Cargar archivos con los datos.
 intents = json.loads(open('./static/assets/chatbot_corpus/intents.json').read())
 words = pickle.load(open('./static/assets/chatbot_corpus/words.pkl','rb'))
 classes = pickle.load(open('./static/assets/chatbot_corpus/classes.pkl','rb'))
@@ -33,7 +33,7 @@ def preprocess_user_input(user_input):
     bag=[]
     bag_of_words = []
    
-    # Input data encoding 
+    # Archivos de datos para cargar.
     for word in words:            
         if word in input_word_token_2:              
             bag_of_words.append(1)
